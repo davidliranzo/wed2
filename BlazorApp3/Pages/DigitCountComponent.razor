@@ -1,0 +1,59 @@
+﻿@page "/digit-count"
+
+<h3>Contar Apariciones de un Dígito en un Vector</h3>
+
+<div>
+    <input type="text" @bind="inputVector" placeholder="Introduce 10 números separados por comas" />
+    <input type="number" @bind="digitToCount" placeholder="Dígito a contar" min="0" max="9" />
+    <button @onclick="ContarApariciones">Contar</button>
+</div>
+
+@if (resultado.HasValue)
+{
+    <p>Cantidad de veces que el dígito aparece: @resultado</p>
+}
+
+@code {
+    private string inputVector;
+    private int digitToCount;
+    private int? resultado;
+
+    private void ContarApariciones()
+    {
+        // Convertir el input a un vector de enteros
+        int[] vector;
+        try
+        {
+            vector = inputVector.Split(',')
+                                 .Select(x => int.Parse(x.Trim()))
+                                 .ToArray();
+
+            if (vector.Length != 10)
+            {
+                resultado = 0;
+                return;
+            }
+        }
+        catch
+        {
+            resultado = 0;
+            return;
+        }
+
+        resultado = ContarDigitoEnVector(vector, digitToCount);
+    }
+
+    private int ContarDigitoEnVector(int[] vector, int digito)
+    {
+        int contador = 0;
+        char digitoChar = digito.ToString()[0];
+
+        foreach (int numero in vector)
+        {
+            // Convertir el número a cadena y contar las apariciones del dígito
+            contador += numero.ToString().Count(c => c == digitoChar);
+        }
+
+        return contador;
+    }
+}

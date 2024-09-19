@@ -1,0 +1,50 @@
+﻿@page "/obtener-digito"
+
+<h3>Obtener Dígito por Posición</h3>
+
+<p>Ingresa un número entero y una posición (menor o igual a 5):</p>
+<InputNumber @bind-Value="numero" Placeholder="Número entero" />
+<InputNumber @bind-Value="posicion" Placeholder="Posición (0 a 5)" />
+<p><button @onclick="ObtenerDigito">Obtener Dígito</button></p>
+
+@if (resultado.HasValue)
+{
+    <p>El dígito en la posición @(posicion) del número @(numero) es @(resultado).</p>
+}
+else if (error != null)
+{
+    <p class="text-danger">@error</p>
+}
+
+@code {
+    private int numero;
+    private int posicion;
+    private int? resultado;
+    private string error;
+
+    private void ObtenerDigito()
+    {
+        error = null; // Limpiar el error previo
+        resultado = null; // Limpiar el resultado previo
+
+        // Verificar que la posición sea válida (menor o igual a 5)
+        if (posicion < 0 || posicion > 5)
+        {
+            error = "La posición debe ser un dígito entre 0 y 5.";
+            return;
+        }
+
+        // Convertir el número a una cadena
+        string numeroStr = Math.Abs(numero).ToString();
+
+        // Verificar si la posición es válida dentro del número
+        if (posicion >= numeroStr.Length)
+        {
+            error = "La posición es mayor que la cantidad de dígitos del número.";
+            return;
+        }
+
+        // Obtener el dígito en la posición especificada
+        resultado = int.Parse(numeroStr[posicion].ToString());
+    }
+}

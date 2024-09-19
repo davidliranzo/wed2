@@ -1,0 +1,92 @@
+﻿@page "/prime-matrix"
+
+<h3>Contar Números Primos en una Matriz 3x4</h3>
+
+<div>
+    <textarea @bind="inputMatrix" rows="4" cols="20" placeholder="Introduce 12 números separados por comas, filas separadas por saltos de línea"></textarea>
+    <button @onclick="ContarNumerosPrimos">Contar</button>
+</div>
+
+@if (resultado.HasValue)
+{
+    <p>Cantidad de números primos en la matriz: @resultado</p>
+}
+
+@code {
+    private string inputMatrix;
+    private int? resultado;
+
+    private void ContarNumerosPrimos()
+    {
+        // Convertir el input a una matriz 3x4
+        int[,] matriz;
+        try
+        {
+            matriz = ConvertirInputAMatriz(inputMatrix);
+        }
+        catch
+        {
+            resultado = 0;
+            return;
+        }
+
+        resultado = ContarPrimosEnMatriz(matriz);
+    }
+
+    private int[,] ConvertirInputAMatriz(string input)
+    {
+        var filas = input.Split('\n')
+                          .Select(fila => fila.Split(',')
+                                               .Select(num => int.Parse(num.Trim()))
+                                               .ToArray())
+                          .ToArray();
+
+        if (filas.Length != 3 || filas.Any(f => f.Length != 4))
+        {
+            throw new ArgumentException("La matriz debe tener exactamente 3 filas y 4 columnas.");
+        }
+
+        int[,] matriz = new int[3, 4];
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                matriz[i, j] = filas[i][j];
+            }
+        }
+
+        return matriz;
+    }
+
+    private int ContarPrimosEnMatriz(int[,] matriz)
+    {
+        int contador = 0;
+
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                if (EsPrimo(matriz[i, j]))
+                {
+                    contador++;
+                }
+            }
+        }
+
+        return contador;
+    }
+
+    private bool EsPrimo(int numero)
+    {
+        if (numero <= 1) return false;
+        if (numero == 2) return true;
+        if (numero % 2 == 0) return false;
+
+        for (int i = 3; i <= Math.Sqrt(numero); i += 2)
+        {
+            if (numero % i == 0) return false;
+        }
+
+        return true;
+    }
+}

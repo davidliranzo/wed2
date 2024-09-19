@@ -1,0 +1,80 @@
+﻿@page "/value-count-matrix"
+
+<h3>Contar Repeticiones de un Valor en una Matriz 4x4</h3>
+
+<div>
+    <textarea @bind="inputMatrix" rows="5" cols="20" placeholder="Introduce 16 números separados por comas, filas separadas por saltos de línea"></textarea>
+    <input type="number" @bind="valueToCount" placeholder="Valor a contar" />
+    <button @onclick="ContarRepeticiones">Contar</button>
+</div>
+
+@if (resultado.HasValue)
+{
+    <p>Cantidad de veces que el valor aparece en la matriz: @resultado</p>
+}
+
+@code {
+    private string inputMatrix;
+    private int valueToCount;
+    private int? resultado;
+
+    private void ContarRepeticiones()
+    {
+        // Convertir el input a una matriz 4x4
+        int[,] matriz;
+        try
+        {
+            matriz = ConvertirInputAMatriz(inputMatrix);
+        }
+        catch
+        {
+            resultado = 0;
+            return;
+        }
+
+        resultado = ContarValorEnMatriz(matriz, valueToCount);
+    }
+
+    private int[,] ConvertirInputAMatriz(string input)
+    {
+        var filas = input.Split('\n')
+                          .Select(fila => fila.Split(',')
+                                               .Select(num => int.Parse(num.Trim()))
+                                               .ToArray())
+                          .ToArray();
+
+        if (filas.Length != 4 || filas.Any(f => f.Length != 4))
+        {
+            throw new ArgumentException("La matriz debe tener exactamente 4 filas y 4 columnas.");
+        }
+
+        int[,] matriz = new int[4, 4];
+        for (int i = 0; i < 4; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                matriz[i, j] = filas[i][j];
+            }
+        }
+
+        return matriz;
+    }
+
+    private int ContarValorEnMatriz(int[,] matriz, int valor)
+    {
+        int contador = 0;
+
+        for (int i = 0; i < 4; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                if (matriz[i, j] == valor)
+                {
+                    contador++;
+                }
+            }
+        }
+
+        return contador;
+    }
+}

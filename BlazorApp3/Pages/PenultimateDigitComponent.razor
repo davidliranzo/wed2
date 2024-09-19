@@ -1,0 +1,64 @@
+﻿@page "/penultimate-digit"
+
+<h3>Contar Números con Dígito en Penúltima Posición</h3>
+
+<div>
+    <input type="text" @bind="inputVector" placeholder="Introduce 10 números separados por comas" />
+    <input type="number" @bind="digitToCheck" placeholder="Dígito a comprobar" min="0" max="9" />
+    <button @onclick="ContarNumerosConDígitoPenúltimo">Contar</button>
+</div>
+
+@if (resultado.HasValue)
+{
+    <p>Cantidad de números con el dígito en la penúltima posición: @resultado</p>
+}
+
+@code {
+    private string inputVector;
+    private int digitToCheck;
+    private int? resultado;
+
+    private void ContarNumerosConDígitoPenúltimo()
+    {
+        // Convertir el input a un vector de enteros
+        int[] vector;
+        try
+        {
+            vector = inputVector.Split(',')
+                                 .Select(x => int.Parse(x.Trim()))
+                                 .ToArray();
+
+            if (vector.Length != 10)
+            {
+                resultado = 0;
+                return;
+            }
+        }
+        catch
+        {
+            resultado = 0;
+            return;
+        }
+
+        resultado = ContarDígitoPenúltimoEnVector(vector, digitToCheck);
+    }
+
+    private int ContarDígitoPenúltimoEnVector(int[] vector, int dígito)
+    {
+        int contador = 0;
+        char dígitoChar = dígito.ToString()[0];
+
+        foreach (int numero in vector)
+        {
+            string numeroStr = numero.ToString();
+
+            // Verificar si el número tiene al menos dos dígitos
+            if (numeroStr.Length >= 2 && numeroStr[^2] == dígitoChar)
+            {
+                contador++;
+            }
+        }
+
+        return contador;
+    }
+}

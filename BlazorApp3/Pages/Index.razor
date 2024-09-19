@@ -1,0 +1,39 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+
+<h3>Obtener el último dígito de un número entero</h3>
+
+<p>Ingresa un número entero:</p>
+
+<InputText @bind-Value="inputValue" Placeholder="Escribe un número..." />
+<p><button @onclick="CalcularUltimoDigito">Calcular último dígito</button></p>
+
+@if (resultado.HasValue)
+{
+    <p>El último dígito es: @resultado</p>
+}
+
+@code {
+    private string inputValue;
+    private int? resultado;
+
+    private void CalcularUltimoDigito()
+    {
+        if (int.TryParse(inputValue, out int numero))
+        {
+            resultado = ObtenerUltimoDigito(numero);
+        }
+        else
+        {
+            resultado = null;
+        }
+    }
+
+    private int ObtenerUltimoDigito(int numero)
+    {
+        return Math.Abs(numero % 10);
+    }
+}
+

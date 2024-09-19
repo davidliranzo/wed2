@@ -1,0 +1,140 @@
+﻿
+<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">BlazorApp3</a>
+        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</div>
+
+<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
+    <nav class="flex-column">
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="oi oi-home" aria-hidden="true"></span> número entero
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="counter">
+                <span class="oi oi-plus" aria-hidden="true"></span> Obtener la cantidad
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="fetchdata">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> primos de un número
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/ascii">
+                <span class="oi oi-keyboard" aria-hidden="true"></span> Código ASCII
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/factorial">
+                <span class="oi oi-calculator" aria-hidden="true"></span> Factorial
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/modulo">
+                <span class="oi oi-check" aria-hidden="true"></span> Verificar Múltiplo
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/contar-digito">
+                <span class="oi oi-pencil" aria-hidden="true"></span> Contar Dígitos
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/multiplo">
+                <span class="oi oi-check" aria-hidden="true"></span> Verificar Múltiplo
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/ascii-digito">
+                <span class="oi oi-keyboard" aria-hidden="true"></span> Verificar ASCII de Dígito
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/numero-minimo-digitos">
+                <span class="oi oi-number" aria-hidden="true"></span> Verificar Número de Dígitos
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/comparar-digitos">
+                <span class="oi oi-number" aria-hidden="true"></span> Comparar Dígitos
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/verificar-diferencia-primo">
+                <span class="oi oi-number" aria-hidden="true"></span> Verificar Diferencia Primalidad
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/obtener-digito">
+                <span class="oi oi-number" aria-hidden="true"></span> Obtener Dígito por Posición
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/vector">
+                <span class="oi oi-number" aria-hidden="true"></span> vector
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/prime-vector">
+                <span class="oi oi-number" aria-hidden="true"></span> prime vector
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/exponentiation">
+                <span class="oi oi-number" aria-hidden="true"></span> exponentiation
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/digit-count">
+                <span class="oi oi-number" aria-hidden="true"></span> digit-count
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/penultimate-digit">
+                <span class="oi oi-number" aria-hidden="true"></span> penultimate-digit
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/prime-matrix">
+                <span class="oi oi-number" aria-hidden="true"></span> prime-matrix
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/value-count-matrix">
+                <span class="oi oi-number" aria-hidden="true"></span> value-count-matrix
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/max-value-column">
+                <span class="oi oi-number" aria-hidden="true"></span> max-value-column
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/moda-matrix">
+                <span class="oi oi-number" aria-hidden="true"></span> moda-matrix
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/about">
+                <span class="oi oi-number" aria-hidden="true"></span> Acerca De
+            </NavLink>
+        </div>
+    </nav>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

@@ -1,0 +1,77 @@
+﻿@page "/prime-vector"
+
+<h3>Buscar Mayor Primo Terminado en 3</h3>
+
+<div>
+    <input type="text" @bind="inputVector" placeholder="Introduce 10 números separados por comas" />
+    <button @onclick="BuscarMayorPrimoTerminadoEn3">Buscar</button>
+</div>
+
+@if (resultadoPosicion.HasValue)
+{
+    <p>Posición del mayor primo terminado en 3: @resultadoPosicion</p>
+}
+
+@code {
+    private string inputVector;
+    private int? resultadoPosicion;
+
+    private void BuscarMayorPrimoTerminadoEn3()
+    {
+        // Convertir el input a un vector de enteros
+        int[] vector;
+        try
+        {
+            vector = inputVector.Split(',')
+                                 .Select(x => int.Parse(x.Trim()))
+                                 .ToArray();
+
+            if (vector.Length != 10)
+            {
+                resultadoPosicion = -1;
+                return;
+            }
+        }
+        catch
+        {
+            resultadoPosicion = -1;
+            return;
+        }
+
+        resultadoPosicion = EncontrarPosicionDelMayorPrimoTerminadoEn3(vector);
+    }
+
+    private int EncontrarPosicionDelMayorPrimoTerminadoEn3(int[] vector)
+    {
+        int mayorPrimo = -1;
+        int posicion = -1;
+
+        for (int i = 0; i < vector.Length; i++)
+        {
+            if (EsPrimo(vector[i]) && vector[i] % 10 == 3)
+            {
+                if (vector[i] > mayorPrimo)
+                {
+                    mayorPrimo = vector[i];
+                    posicion = i;
+                }
+            }
+        }
+
+        return posicion;
+    }
+
+    private bool EsPrimo(int numero)
+    {
+        if (numero <= 1) return false;
+        if (numero == 2) return true;
+        if (numero % 2 == 0) return false;
+
+        for (int i = 3; i <= Math.Sqrt(numero); i += 2)
+        {
+            if (numero % i == 0) return false;
+        }
+
+        return true;
+    }
+}

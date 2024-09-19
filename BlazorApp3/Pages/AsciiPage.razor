@@ -1,0 +1,35 @@
+﻿@page "/ascii"
+
+<h3>Convertir carácter a código ASCII</h3>
+
+<p>Ingresa un carácter:</p>
+
+<InputText @bind-Value="inputChar" Placeholder="Escribe un carácter..." maxlength="1" />
+<p><button @onclick="CalcularCodigoAscii">Obtener Código ASCII</button></p>
+
+@if (resultado.HasValue)
+{
+    <p>El código ASCII del carácter '@inputChar' es: @resultado</p>
+}
+
+@code {
+    private string inputChar;
+    private int? resultado;
+
+    private void CalcularCodigoAscii()
+    {
+        if (!string.IsNullOrEmpty(inputChar) && inputChar.Length == 1)
+        {
+            resultado = ObtenerCodigoAscii(inputChar[0]); // Pasamos el primer (y único) carácter
+        }
+        else
+        {
+            resultado = null;
+        }
+    }
+
+    private int ObtenerCodigoAscii(char c)
+    {
+        return (int)c; // Convertir el carácter a su código ASCII
+    }
+}

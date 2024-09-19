@@ -1,0 +1,38 @@
+﻿@page "/ascii-digito"
+
+<h3>Verificar Código ASCII de un Dígito</h3>
+
+<p>Ingresa un código ASCII:</p>
+<InputText @bind-Value="inputCodigo" Placeholder="Código ASCII..." />
+<p><button @onclick="VerificarCodigoAscii">Verificar</button></p>
+
+@if (resultado != null)
+{
+    <p>@resultado</p>
+}
+
+@code {
+    private string inputCodigo;
+    private string resultado;
+
+    private void VerificarCodigoAscii()
+    {
+        resultado = null; // Limpiar el resultado previo
+
+        if (int.TryParse(inputCodigo, out int codigoAscii))
+        {
+            if (codigoAscii >= 48 && codigoAscii <= 57) // Verifica si el código está en el rango de los dígitos ASCII
+            {
+                resultado = "1";
+            }
+            else
+            {
+                resultado = "0";
+            }
+        }
+        else
+        {
+            resultado = "Por favor, ingrese un código ASCII válido.";
+        }
+    }
+}

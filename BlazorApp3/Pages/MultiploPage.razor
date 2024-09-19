@@ -1,0 +1,49 @@
+﻿@page "/multiplo"
+
+<h3>Verificar Múltiplo de Números</h3>
+
+<p>Ingresa el primer número entero:</p>
+<InputText @bind-Value="inputNumero1" Placeholder="Primer número entero..." />
+<p>Ingresa el segundo número entero:</p>
+<InputText @bind-Value="inputNumero2" Placeholder="Segundo número entero..." />
+<p><button @onclick="VerificarMultiplo">Verificar</button></p>
+
+@if (resultado.HasValue)
+{
+    <p>El número @inputNumero1 @(resultado == 1 ? "es múltiplo" : "no es múltiplo") del número @inputNumero2.</p>
+}
+else if (error != null)
+{
+    <p class="text-danger">@error</p>
+}
+
+@code {
+    private string inputNumero1;
+    private string inputNumero2;
+    private int? resultado;
+    private string error;
+
+    private void VerificarMultiplo()
+    {
+        error = null; // Limpiar el error previo
+
+        if (int.TryParse(inputNumero1, out int numero1) &&
+            int.TryParse(inputNumero2, out int numero2))
+        {
+            if (numero2 != 0) // Evitar división por cero
+            {
+                resultado = (numero1 % numero2 == 0) ? 1 : 0;
+            }
+            else
+            {
+                error = "El segundo número no puede ser cero.";
+                resultado = null;
+            }
+        }
+        else
+        {
+            error = "Por favor, ingrese números enteros válidos.";
+            resultado = null;
+        }
+    }
+}

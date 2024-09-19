@@ -1,0 +1,59 @@
+﻿@page "/fetchdata"
+@using BlazorApp3.Data
+@inject WeatherForecastService ForecastService
+
+<PageTitle>Weather forecast</PageTitle>
+
+<h3>Obtener la cantidad de dígitos primos de un número entero</h3>
+
+<p>Ingresa un número entero:</p>
+
+<InputText @bind-Value="inputValue" Placeholder="Escribe un número..." />
+<p><button @onclick="CalcularCantidadDigitosPrimos">Calcular cantidad de dígitos primos</button></p>
+
+@if (resultado.HasValue)
+{
+    <p>La cantidad de dígitos primos es: @resultado</p>
+}
+
+@code {
+    private string inputValue;
+    private int? resultado;
+
+    private void CalcularCantidadDigitosPrimos()
+    {
+        if (int.TryParse(inputValue, out int numero))
+        {
+            resultado = ContarDigitosPrimos(numero);
+        }
+        else
+        {
+            resultado = null;
+        }
+    }
+
+    private int ContarDigitosPrimos(int numero)
+    {
+        int contadorPrimos = 0;
+        numero = Math.Abs(numero); // Asegurarse de que el número sea positivo
+
+        while (numero > 0)
+        {
+            int digito = numero % 10; // Extraer el último dígito
+            if (EsPrimo(digito))
+            {
+                contadorPrimos++;
+            }
+            numero /= 10; // Eliminar el último dígito
+        }
+
+        return contadorPrimos;
+    }
+
+    private bool EsPrimo(int digito)
+    {
+        // Los únicos dígitos primos posibles son 2, 3, 5 y 7
+        return digito == 2 || digito == 3 || digito == 5 || digito == 7;
+    }
+}
+

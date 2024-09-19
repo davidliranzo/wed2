@@ -1,0 +1,58 @@
+﻿@page "/factorial"
+
+<h3>Calcular Factorial de un Número</h3>
+
+<p>Ingresa un número entero no negativo:</p>
+
+<InputText @bind-Value="inputNumber" Placeholder="Escribe un número..." />
+<p><button @onclick="CalcularFactorial">Calcular Factorial</button></p>
+
+@if (resultado.HasValue)
+{
+    <p>El factorial de @inputNumber es: @resultado</p>
+}
+else if (error != null)
+{
+    <p class="text-danger">@error</p>
+}
+
+@code {
+    private string inputNumber;
+    private long? resultado;
+    private string error;
+
+    private void CalcularFactorial()
+    {
+        error = null; // Limpiar el error previo
+        if (int.TryParse(inputNumber, out int numero))
+        {
+            if (numero >= 0)
+            {
+                resultado = CalcularFactorial(numero);
+            }
+            else
+            {
+                error = "El factorial no está definido para números negativos.";
+                resultado = null;
+            }
+        }
+        else
+        {
+            error = "Por favor, ingrese un número válido.";
+            resultado = null;
+        }
+    }
+
+    private long CalcularFactorial(int numero)
+    {
+        if (numero == 0) return 1;
+
+        long factorial = 1;
+        for (int i = 1; i <= numero; i++)
+        {
+            factorial *= i;
+        }
+
+        return factorial;
+    }
+}

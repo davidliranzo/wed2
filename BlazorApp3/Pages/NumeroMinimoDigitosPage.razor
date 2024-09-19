@@ -1,0 +1,38 @@
+﻿@page "/numero-minimo-digitos"
+
+<h3>Verificar Número de Dígitos</h3>
+
+<p>Ingresa un número entero:</p>
+<InputText @bind-Value="inputNumero" Placeholder="Número entero..." />
+<p><button @onclick="VerificarNumero">Verificar</button></p>
+
+@if (resultado.HasValue)
+{
+    <p>El número @inputNumero @(resultado == 1 ? "tiene" : "no tiene") al menos 3 dígitos.</p>
+}
+else if (error != null)
+{
+    <p class="text-danger">@error</p>
+}
+
+@code {
+    private string inputNumero;
+    private int? resultado;
+    private string error;
+
+    private void VerificarNumero()
+    {
+        error = null; // Limpiar el error previo
+
+        if (int.TryParse(inputNumero, out int numero))
+        {
+            // Verificar si el número tiene al menos 3 dígitos
+            resultado = (Math.Abs(numero) >= 100) ? 1 : 0;
+        }
+        else
+        {
+            error = "Por favor, ingrese un número entero válido.";
+            resultado = null;
+        }
+    }
+}

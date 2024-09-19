@@ -1,0 +1,38 @@
+﻿@page "/counter"
+
+<PageTitle>Counter</PageTitle>
+
+<h3>Obtener la cantidad de dígitos de un número entero</h3>
+
+<p>Ingresa un número entero:</p>
+
+<InputText @bind-Value="inputValue" Placeholder="Escribe un número..." />
+<p><button @onclick="CalcularCantidadDigitos">Calcular cantidad de dígitos</button></p>
+
+@if (resultado.HasValue)
+{
+    <p>La cantidad de dígitos es: @resultado</p>
+}
+
+@code {
+    private string inputValue;
+    private int? resultado;
+
+    private void CalcularCantidadDigitos()
+    {
+        if (int.TryParse(inputValue, out int numero))
+        {
+            resultado = ObtenerCantidadDigitos(numero);
+        }
+        else
+        {
+            resultado = null;
+        }
+    }
+
+    private int ObtenerCantidadDigitos(int numero)
+    {
+        return Math.Abs(numero).ToString().Length;
+    }
+}
+

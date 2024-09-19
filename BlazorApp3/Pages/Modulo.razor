@@ -1,0 +1,49 @@
+﻿@page "/modulo"
+
+<h3>Verificar Múltiplo de un Dígito</h3>
+
+<p>Ingresa un número entero:</p>
+<InputText @bind-Value="inputNumero" Placeholder="Número entero..." />
+<p>Ingresa un dígito (1-9):</p>
+<InputText @bind-Value="inputDigito" Placeholder="Dígito..." maxlength="1" />
+<p><button @onclick="VerificarMultiplo">Verificar</button></p>
+
+@if (resultado.HasValue)
+{
+    <p>El número @inputNumero es @(resultado == 1 ? "múltiplo" : "no múltiplo") del dígito @inputDigito.</p>
+}
+else if (error != null)
+{
+    <p class="text-danger">@error</p>
+}
+
+@code {
+    private string inputNumero;
+    private string inputDigito;
+    private int? resultado;
+    private string error;
+
+    private void VerificarMultiplo()
+    {
+        error = null; // Limpiar el error previo
+
+        if (int.TryParse(inputNumero, out int numero) &&
+            int.TryParse(inputDigito, out int digito))
+        {
+            if (digito > 0)
+            {
+                resultado = (numero % digito == 0) ? 1 : 0;
+            }
+            else
+            {
+                error = "El dígito debe ser mayor que 0.";
+                resultado = null;
+            }
+        }
+        else
+        {
+            error = "Por favor, ingrese un número válido y un dígito entre 1 y 9.";
+            resultado = null;
+        }
+    }
+}

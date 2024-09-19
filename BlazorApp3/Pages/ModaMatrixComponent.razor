@@ -1,0 +1,97 @@
+﻿@page "/moda-matrix"
+
+<h3>Encontrar la Moda de una Matriz 5x5</h3>
+
+<div>
+    <textarea @bind="inputMatrix" rows="6" cols="20" placeholder="Introduce 25 números separados por comas, filas separadas por saltos de línea"></textarea>
+    <button @onclick="EncontrarModa">Encontrar Moda</button>
+</div>
+
+@if (resultado.HasValue)
+{
+    <p>La moda de la matriz es: @resultado</p>
+}
+
+@code {
+    private string inputMatrix;
+    private int? resultado;
+
+    private void EncontrarModa()
+    {
+        // Convertir el input a una matriz 5x5
+        int[,] matriz;
+        try
+        {
+            matriz = ConvertirInputAMatriz(inputMatrix);
+        }
+        catch
+        {
+            resultado = null;
+            return;
+        }
+
+        resultado = ObtenerModaDeMatriz(matriz);
+    }
+
+    private int[,] ConvertirInputAMatriz(string input)
+    {
+        var filas = input.Split('\n')
+                          .Select(fila => fila.Split(',')
+                                               .Select(num => int.Parse(num.Trim()))
+                                               .ToArray())
+                          .ToArray();
+
+        if (filas.Length != 5 || filas.Any(f => f.Length != 5))
+        {
+            throw new ArgumentException("La matriz debe tener exactamente 5 filas y 5 columnas.");
+        }
+
+        int[,] matriz = new int[5, 5];
+        for (int i = 0; i < 5; i++)
+        {
+            for (int j = 0; j < 5; j++)
+            {
+                matriz[i, j] = filas[i][j];
+            }
+        }
+
+        return matriz;
+    }
+
+    private int ObtenerModaDeMatriz(int[,] matriz)
+    {
+        var frecuencia = new Dictionary<int, int>();
+
+        // Contar las frecuencias de cada número en la matriz
+        for (int i = 0; i < 5; i++)
+        {
+            for (int j = 0; j < 5; j++)
+            {
+                int numero = matriz[i, j];
+                if (frecuencia.ContainsKey(numero))
+                {
+                    frecuencia[numero]++;
+                }
+                else
+                {
+                    frecuencia[numero] = 1;
+                }
+            }
+        }
+
+        // Encontrar el valor con la frecuencia máxima
+        int moda = 0;
+        int maxFrecuencia = 0;
+
+        foreach (var item in frecuencia)
+        {
+            if (item.Value > maxFrecuencia)
+            {
+                moda = item.Key;
+                maxFrecuencia = item.Value;
+            }
+        }
+
+        return moda;
+    }
+}

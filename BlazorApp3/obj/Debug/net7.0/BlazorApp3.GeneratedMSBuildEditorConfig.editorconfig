@@ -1,0 +1,143 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = BlazorApp3
+build_property.RootNamespace = BlazorApp3
+build_property.ProjectDir = C:\Users\Eduardo\Desktop\Wed2-main\Wed2-main\BlazorApp3\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Eduardo\Desktop\Wed2-main\Wed2-main\BlazorApp3
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Eduardo/Desktop/Wed2-main/Wed2-main/BlazorApp3/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Eduardo/Desktop/Wed2-main/Wed2-main/BlazorApp3/Pages/AsciiDígitoPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXNjaWlEw61naXRvUGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Eduardo/Desktop/Wed2-main/Wed2-main/BlazorApp3/Pages/AsciiPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXNjaWlQYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Eduardo/Desktop/Wed2-main/Wed2-main/BlazorApp3/Pages/CalcularPromedioReal.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FsY3VsYXJQcm9tZWRpb1JlYWwucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Eduardo/Desktop/Wed2-main/Wed2-main/BlazorApp3/Pages/CompararDigitosPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcGFyYXJEaWdpdG9zUGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Eduardo/Desktop/Wed2-main/Wed2-main/BlazorApp3/Pages/Component.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Eduardo/Desktop/Wed2-main/Wed2-main/BlazorApp3/Pages/ContarDigitoPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGFyRGlnaXRvUGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Eduardo/Desktop/Wed2-main/Wed2-main/BlazorApp3/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Eduardo/Desktop/Wed2-main/Wed2-main/BlazorApp3/Pages/DigitCountComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGlnaXRDb3VudENvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Eduardo/Desktop/Wed2-main/Wed2-main/BlazorApp3/Pages/ExponentiationComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXhwb25lbnRpYXRpb25Db21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Eduardo/Desktop/Wed2-main/Wed2-main/BlazorApp3/Pages/Factorial.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmFjdG9yaWFsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Eduardo/Desktop/Wed2-main/Wed2-main/BlazorApp3/Pages/FetchData.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Eduardo/Desktop/Wed2-main/Wed2-main/BlazorApp3/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Eduardo/Desktop/Wed2-main/Wed2-main/BlazorApp3/Pages/Info.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5mby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Eduardo/Desktop/Wed2-main/Wed2-main/BlazorApp3/Pages/MaxValueColumnComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWF4VmFsdWVDb2x1bW5Db21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Eduardo/Desktop/Wed2-main/Wed2-main/BlazorApp3/Pages/ModaMatrixComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW9kYU1hdHJpeENvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Eduardo/Desktop/Wed2-main/Wed2-main/BlazorApp3/Pages/Modulo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW9kdWxvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Eduardo/Desktop/Wed2-main/Wed2-main/BlazorApp3/Pages/MultiploPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTXVsdGlwbG9QYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Eduardo/Desktop/Wed2-main/Wed2-main/BlazorApp3/Pages/NumeroMinimoDigitosPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTnVtZXJvTWluaW1vRGlnaXRvc1BhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Eduardo/Desktop/Wed2-main/Wed2-main/BlazorApp3/Pages/ObtenerDigitoPorPosicion.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT2J0ZW5lckRpZ2l0b1BvclBvc2ljaW9uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Eduardo/Desktop/Wed2-main/Wed2-main/BlazorApp3/Pages/PenultimateDigitComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGVudWx0aW1hdGVEaWdpdENvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Eduardo/Desktop/Wed2-main/Wed2-main/BlazorApp3/Pages/PrimeMatrixComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpbWVNYXRyaXhDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Eduardo/Desktop/Wed2-main/Wed2-main/BlazorApp3/Pages/PrimeVectorComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpbWVWZWN0b3JDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Eduardo/Desktop/Wed2-main/Wed2-main/BlazorApp3/Pages/ValueCountMatrixComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmFsdWVDb3VudE1hdHJpeENvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Eduardo/Desktop/Wed2-main/Wed2-main/BlazorApp3/Pages/VerificarDiferenciaPrimo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmVyaWZpY2FyRGlmZXJlbmNpYVByaW1vLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Eduardo/Desktop/Wed2-main/Wed2-main/BlazorApp3/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Eduardo/Desktop/Wed2-main/Wed2-main/BlazorApp3/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Eduardo/Desktop/Wed2-main/Wed2-main/BlazorApp3/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-3jp0yu1nwo
+
+[C:/Users/Eduardo/Desktop/Wed2-main/Wed2-main/BlazorApp3/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-ftoi7zkzwr
+
+[C:/Users/Eduardo/Desktop/Wed2-main/Wed2-main/BlazorApp3/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Eduardo/Desktop/Wed2-main/Wed2-main/BlazorApp3/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 

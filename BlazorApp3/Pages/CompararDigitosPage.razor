@@ -1,0 +1,55 @@
+﻿@page "/comparar-digitos"
+
+<h3>Comparar Primer y Último Dígito</h3>
+
+<p>Ingresa un número entero:</p>
+<InputText @bind-Value="inputNumero" Placeholder="Número entero..." />
+<p><button @onclick="CompararDigitos">Comparar</button></p>
+
+@if (resultado.HasValue)
+{
+    <p>El primer dígito del número @inputNumero @(resultado == 1 ? "es igual al último" : "no es igual al último").</p>
+}
+else if (error != null)
+{
+    <p class="text-danger">@error</p>
+}
+
+@code {
+    private string inputNumero;
+    private int? resultado;
+    private string error;
+
+    private void CompararDigitos()
+    {
+        error = null; // Limpiar el error previo
+
+        if (int.TryParse(inputNumero, out int numero))
+        {
+            // Convertir el número a una cadena usando valor absoluto para manejar números negativos
+            string numeroStr = Math.Abs(numero).ToString();
+
+            // Asegurarse de que la cadena tenga al menos un dígito
+            if (numeroStr.Length > 0)
+            {
+                // Obtener el primer y último dígito
+                char primerDigito = numeroStr[0];
+                char ultimoDigito = numeroStr[numeroStr.Length - 1];
+
+                // Comparar los dígitos y asignar el resultado
+                resultado = primerDigito == ultimoDigito ? 1 : 0;
+            }
+            else
+            {
+                // Si no hay dígitos (esto no debería ocurrir para números válidos)
+                resultado = 0;
+            }
+        }
+        else
+        {
+            error = "Por favor, ingrese un número entero válido.";
+            resultado = null;
+        }
+    }
+}
+

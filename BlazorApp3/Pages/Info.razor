@@ -1,0 +1,61 @@
+﻿@page "/about"
+
+<h3>Acerca de</h3>
+
+<div class="about-container">
+    <img src="~/imagenes/perfil.jpg" class="profile-photo" />
+    <div class="about-info">
+        <h4>David Alejandro Liranzo Zabala</h4>
+        <p>David Alejandro Liranzo Zabala</p>
+
+        <div class="contact-buttons">
+            <a href="https://wa.me/8494321520?text=Hola%2C%20te%20contacto%20para%20un%20trabajo%20bueno%2C%20te%20pagaremos%20mucho%20dinero
+" target="_blank" class="contact-button whatsapp-button">
+                Contactar por WhatsApp
+            </a>
+    
+        </div>
+    </div>
+</div>
+
+<style>
+    .about-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-photo {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .about-info {
+        margin-top: 20px;
+    }
+
+    .contact-buttons {
+        margin-top: 20px;
+    }
+
+    .contact-button {
+        display: inline-block;
+        margin: 5px;
+        padding: 10px 20px;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+    .whatsapp-button {
+        background-color: #25D366; /* WhatsApp color */
+    }
+
+    .telegram-button {
+        background-color: #0088cc; /* Telegram color */
+    }
+</style>

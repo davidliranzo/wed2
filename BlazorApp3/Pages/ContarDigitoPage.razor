@@ -1,0 +1,48 @@
+﻿@page "/contar-digito"
+
+<h3>Contar Dígitos en un Número</h3>
+
+<p>Ingresa un número entero:</p>
+<InputText @bind-Value="inputNumero" Placeholder="Número entero..." />
+<p>Ingresa un dígito (0-9):</p>
+<InputText @bind-Value="inputDigito" Placeholder="Dígito..." maxlength="1" />
+<p><button @onclick="ContarDigito">Contar Dígitos</button></p>
+
+@if (resultado.HasValue)
+{
+    <p>El dígito @inputDigito aparece @resultado veces en el número @inputNumero.</p>
+}
+else if (error != null)
+{
+    <p class="text-danger">@error</p>
+}
+
+@code {
+    private string inputNumero;
+    private string inputDigito;
+    private int? resultado;
+    private string error;
+
+    private void ContarDigito()
+    {
+        error = null; // Limpiar el error previo
+
+        if (int.TryParse(inputNumero, out _) &&
+            int.TryParse(inputDigito, out int digito) &&
+            digito >= 0 && digito <= 9)
+        {
+            resultado = ContarOcurrencias(inputNumero, inputDigito);
+        }
+        else
+        {
+            error = "Por favor, ingrese un número entero válido y un dígito entre 0 y 9.";
+            resultado = null;
+        }
+    }
+
+    private int ContarOcurrencias(string numero, string digito)
+    {
+        // Convertir el número a cadena y contar ocurrencias del dígito
+        return numero.Count(c => c.ToString() == digito);
+    }
+}

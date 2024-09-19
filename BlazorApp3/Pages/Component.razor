@@ -1,0 +1,34 @@
+﻿@page "/vector"
+
+<h3>Buscar Valor en Vector</h3>
+
+<div>
+    <input type="number" @bind="valorBuscado" placeholder="Valor a buscar" />
+    <button @onclick="BuscarValor">Buscar</button>
+</div>
+
+@if (resultado.HasValue)
+{
+    <p>Resultado: @resultado</p>
+}
+
+@code {
+    private int valorBuscado;
+    private int? resultado;
+
+    private void BuscarValor()
+    {
+        int[] vector = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }; // Aquí defines el vector de 10 enteros
+        resultado = BuscarValorEnVector(vector, valorBuscado);
+    }
+
+    private int BuscarValorEnVector(int[] vector, int valor)
+    {
+        if (vector.Length != 10)
+        {
+            throw new ArgumentException("El vector debe tener exactamente 10 posiciones.");
+        }
+
+        return vector.Contains(valor) ? 1 : 0;
+    }
+}

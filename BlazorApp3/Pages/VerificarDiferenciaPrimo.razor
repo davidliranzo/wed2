@@ -1,0 +1,61 @@
+﻿@page "/verificar-diferencia-primo"
+
+<h3>Verificar Diferencia Primalidad</h3>
+
+<p>Ingresa dos números enteros:</p>
+<InputNumber @bind-Value="valor1" Placeholder="Primer número" />
+<InputNumber @bind-Value="valor2" Placeholder="Segundo número" />
+<p><button @onclick="VerificarDiferencia">Verificar</button></p>
+
+@if (resultado.HasValue)
+{
+    <p>La diferencia entre los números @(valor1) y @(valor2) @(resultado == 1 ? "es un número primo" : "no es un número primo").</p>
+}
+else if (error != null)
+{
+    <p class="text-danger">@error</p>
+}
+
+@code {
+    private int valor1;
+    private int valor2;
+    private int? resultado;
+    private string error;
+
+    private void VerificarDiferencia()
+    {
+        error = null; // Limpiar el error previo
+
+        try
+        {
+            // Calcular la diferencia absoluta entre los dos números
+            int diferencia = Math.Abs(valor1 - valor2);
+
+            // Verificar si la diferencia es un número primo
+            resultado = EsPrimo(diferencia) ? 1 : 0;
+        }
+        catch (Exception ex)
+        {
+            // Manejar errores si ocurre algún problema
+            error = $"Ocurrió un error: {ex.Message}";
+            resultado = null;
+        }
+    }
+
+    // Función para determinar si un número es primo
+    private bool EsPrimo(int numero)
+    {
+        if (numero <= 1) return false; // Los números menores o iguales a 1 no son primos
+        if (numero == 2) return true;  // El 2 es el único número primo par
+        if (numero % 2 == 0) return false; // Los números pares mayores a 2 no son primos
+
+        // Verificar divisibilidad por números impares desde 3 hasta la raíz cuadrada del número
+        for (int i = 3; i <= Math.Sqrt(numero); i += 2)
+        {
+            if (numero % i == 0)
+                return false;
+        }
+
+        return true;
+    }
+}

@@ -1,0 +1,80 @@
+﻿@page "/max-value-column"
+
+<h3>Encontrar Columna del Máximo Valor en una Matriz 4x4</h3>
+
+<div>
+    <textarea @bind="inputMatrix" rows="5" cols="20" placeholder="Introduce 16 números separados por comas, filas separadas por saltos de línea"></textarea>
+    <button @onclick="EncontrarColumnaMaximo">Encontrar Columna</button>
+</div>
+
+@if (resultado.HasValue)
+{
+    <p>Número de la columna con el máximo valor: @resultado</p>
+}
+
+@code {
+    private string inputMatrix;
+    private int? resultado;
+
+    private void EncontrarColumnaMaximo()
+    {
+        // Convertir el input a una matriz 4x4
+        int[,] matriz;
+        try
+        {
+            matriz = ConvertirInputAMatriz(inputMatrix);
+        }
+        catch
+        {
+            resultado = null;
+            return;
+        }
+
+        resultado = ObtenerColumnaDelMaximoValor(matriz);
+    }
+
+    private int[,] ConvertirInputAMatriz(string input)
+    {
+        var filas = input.Split('\n')
+                          .Select(fila => fila.Split(',')
+                                               .Select(num => int.Parse(num.Trim()))
+                                               .ToArray())
+                          .ToArray();
+
+        if (filas.Length != 4 || filas.Any(f => f.Length != 4))
+        {
+            throw new ArgumentException("La matriz debe tener exactamente 4 filas y 4 columnas.");
+        }
+
+        int[,] matriz = new int[4, 4];
+        for (int i = 0; i < 4; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                matriz[i, j] = filas[i][j];
+            }
+        }
+
+        return matriz;
+    }
+
+    private int ObtenerColumnaDelMaximoValor(int[,] matriz)
+    {
+        int maximoValor = int.MinValue;
+        int columnaMaximo = -1;
+
+        for (int i = 0; i < 4; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                if (matriz[i, j] > maximoValor)
+                {
+                    maximoValor = matriz[i, j];
+                    columnaMaximo = j;
+                }
+            }
+        }
+
+        return columnaMaximo + 1; // Para retornar la columna 1-indexed
+    }
+}

@@ -1,0 +1,30 @@
+﻿@page "/exponentiation"
+
+<h3>Calcular Potencia</h3>
+
+<div>
+    <input type="number" @bind="baseNumber" placeholder="Base" />
+    <input type="number" @bind="exponent" placeholder="Exponente" />
+    <button @onclick="CalcularPotencia">Calcular</button>
+</div>
+
+@if (resultado.HasValue)
+{
+    <p>Resultado: @resultado</p>
+}
+
+@code {
+    private int baseNumber;
+    private int exponent;
+    private double? resultado;
+
+    private void CalcularPotencia()
+    {
+        resultado = Potencia(baseNumber, exponent);
+    }
+
+    private double Potencia(int baseNumber, int exponent)
+    {
+        return Math.Pow(baseNumber, exponent);
+    }
+}
